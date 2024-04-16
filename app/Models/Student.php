@@ -20,19 +20,17 @@ class Student extends Model
      * Summary of fillable
      * @var array
      */
-    protected $fillable = ['nombre', 'apellido', 'fecha_nacimiento', 'aula_id'];
-
-    /**
-     * Summary of dates
-     * @var array
-     */
-    protected $dates = ['fecha_nacimiento'];
-
-    protected $casts = [
-        'fecha_nacimiento' => 'date:Y-m-d',
-    ];
+    protected $fillable = ['matricula', 'nombre', 'email'];
 
     /*-------------------------------- RELACIONES ------------------------------*/
 
+    /**
+     * Summary of subjects
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class, 'student_subjects');
+    }
     /*------------------------------------------------------------------------*/
 }
