@@ -18,5 +18,17 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // Seeding tablas independientes
+        $this->call(ClassroomSeeder::class);
+        $this->call(TeacherSeeder::class);
+        $this->call(SubjectSeeder::class);
+
+        // Seeding tablas dependientes
+        $this->call(StudentSeeder::class);
+
+        // Seeding relaciones
+        $this->call(StudentSubjectSeeder::class);
+        $this->call(SubjectTeacherSeeder::class);
     }
 }
